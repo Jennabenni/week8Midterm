@@ -1,3 +1,6 @@
+Act on Activities
+
+
 Midterm project will be an activity planner with multiple features for
 generating an idea, list of required items for activity, possible food
 options, a schedule with dates, and an area for the user to take notes.
@@ -127,3 +130,10 @@ Phase 4: Final tests and CSS.  Any remaining testing can be done as a brief over
 
 
 
+***********************
+
+CSS Styling
+
+- Will be based on the color yellow, specifically #FEC601
+- Accessible
+- Responsive

@@ -1,0 +1,24 @@
+* {
+    font-family: Georgia, serif;
+}
+
+body {
+    background-color: #fff6d6;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background-color: #FEC601;
+}
+
+nav a {
+    display: block;
+    padding: 10px 16px;
+    text-decoration: none;
+    color: #000;
+}
+
+nav a:hover {
+    background-color: #e6b100;
+}
