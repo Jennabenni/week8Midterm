@@ -18,6 +18,7 @@ Key files
 
 - gitignore
     - empty for the moment
+    - node.modules (also empty)
 
 - style
     - styles.css
