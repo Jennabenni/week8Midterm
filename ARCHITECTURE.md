@@ -27,6 +27,13 @@ Key files
 - activity.html
 - schedule.html
 - userNotes.html
+- checklist.html
+
+- scripts
+    - activity.js
+    - checklist.js
+    - notes.js
+    - schedule.js
 
 - README.md
 - PROJECT-STATUS.md
