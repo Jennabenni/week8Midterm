@@ -17,7 +17,39 @@
 
     <main>
 
+        <h1>Schedule an Activity</h1>
+
+        <form id="schedule-form">
+            <label for="activity-input">Activity:</label>
+            <input type="text" id="activity-input" placeholder="Enter an activity" required>
+
+            <label for="date-input">Date:</label>
+            <input type="date" id="date-input" required>
+
+            <button type="submit">Add to Calendar</button>
+        </form>
+
+        <div id="calendar-section">
+            <div id="calendar-header">
+                <button id="prev-month">&#8592;</button>
+                <h2 id="month-label"></h2>
+                <button id="next-month">&#8594;</button>
+            </div>
+
+            <div id="calendar-grid">
+                <div class="day-name">Sun</div>
+                <div class="day-name">Mon</div>
+                <div class="day-name">Tue</div>
+                <div class="day-name">Wed</div>
+                <div class="day-name">Thu</div>
+                <div class="day-name">Fri</div>
+                <div class="day-name">Sat</div>
+            </div>
+        </div>
+
     </main>
+
+    <script src="scripts/schedule.js"></script>
 
 </body>
 </html>
