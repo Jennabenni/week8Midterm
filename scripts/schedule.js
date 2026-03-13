@@ -7,7 +7,7 @@ let viewYear = today.getFullYear();
 let viewMonth = today.getMonth(); // 0-indexed
 
 const monthLabel = document.getElementById("month-label");
-const calendarGrid = document.getElementById("calendar-grid");
+const calendarBody = document.getElementById("calendar-body");
 const scheduleForm = document.getElementById("schedule-form");
 const activityInput = document.getElementById("activity-input");
 const dateInput = document.getElementById("date-input");
@@ -33,30 +33,35 @@ function formatDateKey(year, month, day) {
 }
 
 function renderCalendar() {
-    // Remove all day cells (keep the 7 day-name headers)
-    const dayCells = calendarGrid.querySelectorAll(".day-cell");
-    dayCells.forEach(cell => cell.remove());
+    calendarBody.innerHTML = "";
 
     monthLabel.textContent = `${monthNames[viewMonth]} ${viewYear}`;
 
     const firstDay = new Date(viewYear, viewMonth, 1).getDay(); // 0 = Sunday
     const daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
+    const todayKey = formatDateKey(today.getFullYear(), today.getMonth(), today.getDate());
 
-    // Leading empty cells
+    let day = 1;
+    let row = document.createElement("tr");
+
+    // Fill leading empty cells in the first row
     for (let i = 0; i < firstDay; i++) {
-        const empty = document.createElement("div");
-        empty.classList.add("day-cell", "empty");
-        calendarGrid.appendChild(empty);
+        const empty = document.createElement("td");
+        empty.classList.add("empty");
+        row.appendChild(empty);
     }
 
-    // Day cells
-    for (let day = 1; day <= daysInMonth; day++) {
+    // Fill day cells across rows
+    for (let col = firstDay; day <= daysInMonth; col++) {
+        if (col > 0 && col % 7 === 0) {
+            calendarBody.appendChild(row);
+            row = document.createElement("tr");
+        }
+
         const dateKey = formatDateKey(viewYear, viewMonth, day);
-        const cell = document.createElement("div");
+        const cell = document.createElement("td");
         cell.classList.add("day-cell");
 
-        // Highlight today
-        const todayKey = formatDateKey(today.getFullYear(), today.getMonth(), today.getDate());
         if (dateKey === todayKey) {
             cell.classList.add("today");
         }
@@ -86,8 +91,21 @@ function renderCalendar() {
             cell.appendChild(flag);
         });
 
-        calendarGrid.appendChild(cell);
+        row.appendChild(cell);
+        day++;
     }
+
+    // Fill trailing empty cells to complete the last row
+    const lastCol = (firstDay + daysInMonth) % 7;
+    if (lastCol !== 0) {
+        for (let i = lastCol; i < 7; i++) {
+            const empty = document.createElement("td");
+            empty.classList.add("empty");
+            row.appendChild(empty);
+        }
+    }
+
+    calendarBody.appendChild(row);
 }
 
 scheduleForm.addEventListener("submit", (e) => {
