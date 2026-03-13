@@ -81,3 +81,9 @@ p {
     font-size: 0.85em;
     margin-bottom: 2px;
 }
+
+/* Checklist */
+.crossed-off {
+    text-decoration: line-through;
+    color: #888;
+}

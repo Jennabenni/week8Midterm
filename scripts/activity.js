@@ -134,7 +134,10 @@ function showResult() {
     resultList.innerHTML = "";
     result.activities.forEach(activity => {
         const li = document.createElement("li");
-        li.textContent = activity;
+        const link = document.createElement("a");
+        link.href = `checklist.html?activity=${encodeURIComponent(activity)}`;
+        link.textContent = activity;
+        li.appendChild(link);
         resultList.appendChild(li);
     });
 }
