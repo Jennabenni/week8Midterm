@@ -61,6 +61,11 @@ const results = {
         title: "High-Energy Group Experience",
         description: "An exciting activity to share with a group.",
         activities: ["Go to a concert", "Try a bar crawl", "Visit a nightclub", "Spend a day at an amusement park", "Try a horror escape room"]
+    },
+    5: {
+        title: "Cozy Indoor Hangout",
+        description: "A laid-back indoor activity to enjoy with friends.",
+        activities: ["Play a video game together", "Play a board game", "Have a movie marathon", "Bake something together"]
     }
 };
 
@@ -104,11 +109,13 @@ function loadQuestion(index) {
 }
 
 function getResult() {
-    // Primary drivers: Q6 (index 5) intensity, Q3 (index 2) alone/with others
+    // Primary drivers: Q6 (index 5) intensity, Q3 (index 2) alone/with others, Q2 (index 1) inside/outside
     const intensity = answers[5];
     const group = answers[2];
+    const location = answers[1];
 
     if (intensity === "Laid-back" && group === "Alone") return results[1];
+    if (intensity === "Laid-back" && group === "With others" && location === "Inside") return results[5];
     if (intensity === "Laid-back" && group === "With others") return results[2];
     if (intensity === "High-intensity" && group === "Alone") return results[3];
     if (intensity === "High-intensity" && group === "With others") return results[4];

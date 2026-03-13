@@ -85,6 +85,8 @@ Minimum Viable Products (4-5):
 
         4.  If (high-intensity, with friends): concert, bar crawl, nightclub, amusement park, horror escape room
 
+        5.  If (Inside, with friends, laid-back): video game, board game, movie marathon, baking
+
         More results may be added or more refined
 
 
