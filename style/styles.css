@@ -59,6 +59,19 @@ nav a:hover {
 
 
 /* ================================
+   SITE TITLE (index.html only)
+   Sits above the nav bar as a header.
+   ================================ */
+#site-title {
+    background-color: #FEC601;
+    margin: 0;
+    padding: 16px;
+    text-align: center;
+    font-size: 1.8em;
+}
+
+
+/* ================================
    PAGE HEADINGS
    ================================ */
 h1 {
@@ -238,6 +251,12 @@ main {
     border: 1px solid #000;
     width: 14.28%;
     background-color: #fff7db;
+}
+
+/* Highlight today's date in the calendar */
+#calendar-table td.today {
+    outline: 2px solid #ff9900;
+    outline-offset: -2px;
 }
 
 .day-number {
@@ -485,6 +504,16 @@ main {
 #food-generator button {
     display: block;
     margin: 20px auto 0;
+}
+
+/* Override global p style inside food generator —
+   global p is 1.4em which makes question text too large */
+#food-generator p {
+    font-size: 1em;
+    max-width: none;
+    text-align: left;
+    margin-top: 12px;
+    padding: 0;
 }
 
 /* Space out form elements inside activity sections */
