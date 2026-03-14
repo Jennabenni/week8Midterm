@@ -87,3 +87,8 @@ p {
     text-decoration: line-through;
     color: #888;
 }
+
+/* Auth */
+.auth-error {
+    color: red;
+}

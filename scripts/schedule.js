@@ -1,7 +1,13 @@
-// Load saved activities from localStorage, or start with empty array
-let activities = JSON.parse(localStorage.getItem("scheduledActivities")) || [];
+import { auth, db } from './firebase-config.js';
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-auth.js";
+import {
+    collection, addDoc, deleteDoc, doc, onSnapshot
+} from "https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore.js";
 
-// Track which month/year the calendar is showing
+let activities = [];
+let currentUser = null;
+let unsubscribe = null;
+
 const today = new Date();
 let viewYear = today.getFullYear();
 let viewMonth = today.getMonth(); // 0-indexed
@@ -17,16 +23,30 @@ const monthNames = [
     "July", "August", "September", "October", "November", "December"
 ];
 
-function saveActivities() {
-    localStorage.setItem("scheduledActivities", JSON.stringify(activities));
-}
+onAuthStateChanged(auth, (user) => {
+    if (!user) return;
+    currentUser = user;
+
+    // Clean up any previous listener
+    if (unsubscribe) unsubscribe();
+
+    const activitiesRef = collection(db, "users", user.uid, "scheduledActivities");
+
+    // Real-time listener — re-renders calendar whenever Firestore data changes
+    unsubscribe = onSnapshot(activitiesRef, (snapshot) => {
+        activities = [];
+        snapshot.forEach(docSnap => {
+            activities.push({ id: docSnap.id, ...docSnap.data() });
+        });
+        renderCalendar();
+    });
+});
 
 function getActivitiesForDate(dateString) {
     return activities.filter(entry => entry.date === dateString);
 }
 
 function formatDateKey(year, month, day) {
-    // Returns YYYY-MM-DD to match the date input value format
     const mm = String(month + 1).padStart(2, "0");
     const dd = String(day).padStart(2, "0");
     return `${year}-${mm}-${dd}`;
@@ -37,21 +57,19 @@ function renderCalendar() {
 
     monthLabel.textContent = `${monthNames[viewMonth]} ${viewYear}`;
 
-    const firstDay = new Date(viewYear, viewMonth, 1).getDay(); // 0 = Sunday
+    const firstDay = new Date(viewYear, viewMonth, 1).getDay();
     const daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
     const todayKey = formatDateKey(today.getFullYear(), today.getMonth(), today.getDate());
 
     let day = 1;
     let row = document.createElement("tr");
 
-    // Fill leading empty cells in the first row
     for (let i = 0; i < firstDay; i++) {
         const empty = document.createElement("td");
         empty.classList.add("empty");
         row.appendChild(empty);
     }
 
-    // Fill day cells across rows
     for (let col = firstDay; day <= daysInMonth; col++) {
         if (col > 0 && col % 7 === 0) {
             calendarBody.appendChild(row);
@@ -71,7 +89,6 @@ function renderCalendar() {
         dayNumber.textContent = day;
         cell.appendChild(dayNumber);
 
-        // Add any activities scheduled for this day
         const dayActivities = getActivitiesForDate(dateKey);
         dayActivities.forEach(entry => {
             const flag = document.createElement("div");
@@ -81,10 +98,8 @@ function renderCalendar() {
             const removeBtn = document.createElement("button");
             removeBtn.classList.add("remove-btn");
             removeBtn.textContent = "x";
-            removeBtn.addEventListener("click", () => {
-                activities = activities.filter(a => a !== entry);
-                saveActivities();
-                renderCalendar();
+            removeBtn.addEventListener("click", async () => {
+                await deleteDoc(doc(db, "users", currentUser.uid, "scheduledActivities", entry.id));
             });
 
             flag.appendChild(removeBtn);
@@ -95,7 +110,6 @@ function renderCalendar() {
         day++;
     }
 
-    // Fill trailing empty cells to complete the last row
     const lastCol = (firstDay + daysInMonth) % 7;
     if (lastCol !== 0) {
         for (let i = lastCol; i < 7; i++) {
@@ -108,23 +122,21 @@ function renderCalendar() {
     calendarBody.appendChild(row);
 }
 
-scheduleForm.addEventListener("submit", (e) => {
+scheduleForm.addEventListener("submit", async (e) => {
     e.preventDefault();
+    if (!currentUser) return;
 
     const activity = activityInput.value.trim();
     const date = dateInput.value;
-
     if (!activity || !date) return;
 
-    activities.push({ activity, date });
-    saveActivities();
+    const activitiesRef = collection(db, "users", currentUser.uid, "scheduledActivities");
+    await addDoc(activitiesRef, { activity, date });
 
-    // Navigate calendar to the month of the added activity
+    // Navigate to the month of the added activity
     const [year, month] = date.split("-").map(Number);
     viewYear = year;
     viewMonth = month - 1;
-
-    renderCalendar();
 
     activityInput.value = "";
     dateInput.value = "";
@@ -132,21 +144,12 @@ scheduleForm.addEventListener("submit", (e) => {
 
 document.getElementById("prev-month").addEventListener("click", () => {
     viewMonth--;
-    if (viewMonth < 0) {
-        viewMonth = 11;
-        viewYear--;
-    }
+    if (viewMonth < 0) { viewMonth = 11; viewYear--; }
     renderCalendar();
 });
 
 document.getElementById("next-month").addEventListener("click", () => {
     viewMonth++;
-    if (viewMonth > 11) {
-        viewMonth = 0;
-        viewYear++;
-    }
+    if (viewMonth > 11) { viewMonth = 0; viewYear++; }
     renderCalendar();
 });
-
-// Initialize
-renderCalendar();
