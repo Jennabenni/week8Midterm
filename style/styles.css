@@ -248,7 +248,7 @@ main {
 
 /* Activity flags inside calendar cells — matching background */
 .activity-flag {
-    background-color: #fff7db;
+    background-color: #ffb55c;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 0.85em;
