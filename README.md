@@ -101,11 +101,42 @@ Minimum Viable Products (4-5):
 
 Potential future features:
 
-- User can add their own activities and flag them with certain key words (such as 'high-intensity') or can add food ideas
+- User can add their own activities and flag them with certain key words (such as 'high-intensity') or can add food ideas (+)
 
 - Can utilize map API and potentially look at activities and/or food ideas in area (for user to view map, not the website)
 
-- Additional quiz could be added specifically for food, done after activity is selected
+- Additional quiz could be added specifically for food, done after activity is selected (+)
+    - Hot or cold food?
+    - Food or drink
+
+    This will have a button and generate a random item, and button can be clicked multiple times and shuffle through items
+
+    Hot food
+    - Pizza
+    - Miso soup
+    - Hot sandwich
+    - Pho
+    -
+
+    Cold food
+    - Sushi
+    - Cold sandwich
+    - Pie
+    - Ice cream
+
+    Hot Drink
+    - coffee
+    - tea
+
+
+    Cold drink
+    - iced coffee/iced tea
+    - water
+    - soda
+
+
+
+
 
 - Main page, no account needed, shows popular ideas
 

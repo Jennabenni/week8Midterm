@@ -35,7 +35,36 @@
 
     </main>
 
+    <hr>
+
+    <section id="food-generator">
+        <h2>Food &amp; Drink Generator</h2>
+        <p>Answer two questions and get a suggestion.</p>
+
+        <div id="food-questions">
+            <p>
+                <strong>1. Hot or cold?</strong><br>
+                <label><input type="radio" name="temp" value="Hot"> Hot</label><br>
+                <label><input type="radio" name="temp" value="Cold"> Cold</label>
+            </p>
+
+            <p>
+                <strong>2. Food or drink?</strong><br>
+                <label><input type="radio" name="type" value="Food"> Food</label><br>
+                <label><input type="radio" name="type" value="Drink"> Drink</label>
+            </p>
+        </div>
+
+        <button id="generate-food-btn" disabled>Generate</button>
+
+        <div id="food-result" style="display: none;">
+            <p id="food-suggestion"></p>
+            <button id="next-food-btn">Next Suggestion</button>
+        </div>
+    </section>
+
     <script src="scripts/activity.js"></script>
+    <script src="scripts/food.js"></script>
     <script type="module" src="scripts/auth-guard.js"></script>
 
 </body>
