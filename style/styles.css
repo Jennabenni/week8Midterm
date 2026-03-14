@@ -15,6 +15,26 @@ body {
 
 
 /* ================================
+   BUTTONS
+   Global style applied to all buttons
+   across the website.
+   ================================ */
+button {
+    background-color: #ff9900;
+    color: #000;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 0.95em;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #e68a00;
+}
+
+
+/* ================================
    NAVIGATION
    Centered bar with constrained width.
    Links sit inline using flexbox.
@@ -81,7 +101,7 @@ main {
    ================================ */
 #review-form-section {
     background-color: #fff;
-    border: 1px solid #ddd;
+    border: 1px solid black;
     border-radius: 6px;
     padding: 20px;
     margin-bottom: 24px;
