@@ -235,7 +235,8 @@ main {
    ================================ */
 
 /* Quiz and result sit inside <main>, which already
-   constrains width. Give them the white card look. */
+   constrains width. Give them the white card look.
+   Narrower max-width keeps the form compact. */
 #quiz-container,
 #result-container {
     background-color: #fff;
@@ -243,18 +244,41 @@ main {
     border-radius: 6px;
     padding: 28px;
     margin-bottom: 24px;
+    max-width: 620px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Center buttons within the quiz and result boxes */
+#quiz-container button,
+#result-container button {
+    display: block;
+    margin: 20px auto 0;
+}
+
+/* More breathing room between each quiz option */
+#options-container label {
+    display: block;
+    padding: 8px 0;
 }
 
 /* Food generator and custom activity are outside <main>,
-   so they need their own width constraint and centering. */
+   so they need their own width constraint and centering.
+   Narrowed to match the quiz box width. */
 #food-generator,
 #custom-activity-section {
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 6px;
     padding: 28px;
-    max-width: 860px;
+    max-width: 620px;
     margin: 24px auto;
+}
+
+/* Center the generate button in the food section */
+#food-generator button {
+    display: block;
+    margin: 20px auto 0;
 }
 
 /* Space out form elements inside activity sections */
