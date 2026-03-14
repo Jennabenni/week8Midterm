@@ -28,11 +28,20 @@ Key files
 - schedule.html
 - userNotes.html
 - checklist.html
+- profile.html
+- auth.html
 
 - scripts
     - activity.js
+    - auth-guard.js
+    - auth.js
     - checklist.js
+    - customActivity.js
+    - firebase-config.js
+    - food.js
     - notes.js
+    - profile.js
+    - reviews.js
     - schedule.js
 
 - README.md

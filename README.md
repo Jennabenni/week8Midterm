@@ -27,7 +27,7 @@ If user information will be stored
 For Complete Tier (Do this after Base is working)
 
 - User Authentication (Log in) (Certain pages cannot be viewed without it) (remain logged in on refresh)
-- Cloud Database (Recommends: Firebase Auth, Supabase Auth, or Auth0)
+- Cloud Database (Recommends: Firebase Auth, Supabase Auth, or Auth0) Firebase used
 - 6-8 features in total, but has list requirements
 
         All Base Tier features, plus 2-3 from this list:
@@ -101,11 +101,11 @@ Minimum Viable Products (4-5):
 
 Potential future features:
 
-- User can add their own activities and flag them with certain key words (such as 'high-intensity') or can add food ideas (+)
+- User can add their own activities and flag them with certain key words (such as 'high-intensity') or can add food ideas [DONE]
 
 - Can utilize map API and potentially look at activities and/or food ideas in area (for user to view map, not the website)
 
-- Additional quiz could be added specifically for food, done after activity is selected (+)
+- Additional quiz could be added specifically for food, done after activity is selected [DONE]
     - Hot or cold food?
     - Food or drink
 
