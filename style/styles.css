@@ -171,18 +171,57 @@ main {
 
 
 /* ================================
-   CALENDAR TABLE (schedule.html)
+   SCHEDULE PAGE (schedule.html)
    ================================ */
+
+/* Activity input form — horizontal bar with matching background */
+#schedule-form {
+    background-color: #fff7db;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 14px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+#schedule-form label {
+    font-weight: bold;
+    margin: 0;
+}
+
+#schedule-form input {
+    padding: 6px 8px;
+    font-size: 0.95em;
+}
+
+/* Calendar header — month label on the left, arrows to the right */
+#calendar-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+#calendar-header h2 {
+    margin: 0;
+    flex: 1;
+}
+
+/* Calendar table — #fff7db background on all cells */
 #calendar-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 16px;
+    margin-top: 4px;
 }
 
 #calendar-table th {
     border: 1px solid #000;
     padding: 8px;
     text-align: center;
+    background-color: #fff7db;
 }
 
 #calendar-table td.day-cell {
@@ -192,11 +231,13 @@ main {
     min-height: 100px;
     height: 100px;
     padding: 4px;
+    background-color: #fff7db;
 }
 
 #calendar-table td.empty {
     border: 1px solid #000;
     width: 14.28%;
+    background-color: #fff7db;
 }
 
 .day-number {
@@ -205,9 +246,25 @@ main {
     margin-bottom: 4px;
 }
 
+/* Activity flags inside calendar cells — matching background */
 .activity-flag {
+    background-color: #fff7db;
+    border: 1px solid #ccc;
+    border-radius: 4px;
     font-size: 0.85em;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
+    padding: 2px 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4px;
+}
+
+/* X remove button — smaller than the global button style */
+.remove-btn {
+    font-size: 0.7em;
+    padding: 2px 5px;
+    line-height: 1;
 }
 
 
