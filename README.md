@@ -32,13 +32,13 @@ For Complete Tier (Do this after Base is working)
 
         All Base Tier features, plus 2-3 from this list:
 
-        - User profile with editable info or avatar
+        - User profile with editable info or avatar [DONE]
         - Real-time updates
         - Categories, tags, or advanced filtering
-        - Comments, reviews, or ratings (+)
+        - Comments, reviews, or ratings [DONE]
         - Data visualization (charts with Chart.js or Recharts)
         - Media uploads (images, files)
-        - Drag-and-drop, keyboard shortcuts, or bulk operations (+)
+        - Drag-and-drop, keyboard shortcuts, or bulk operations
 
         Items with (+) fit and are more likely to be chosen.
 

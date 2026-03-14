@@ -10,7 +10,6 @@ onAuthStateChanged(auth, (user) => {
     const authLink = document.getElementById("nav-auth-link");
 
     if (user) {
-        // Show email and a log out link
         if (authLink) {
             authLink.textContent = "Log Out";
             authLink.href = "#";
@@ -21,6 +20,9 @@ onAuthStateChanged(auth, (user) => {
                 });
             });
         }
+
+        const profileLink = document.getElementById("nav-profile-link");
+        if (profileLink) profileLink.style.display = "block";
     } else {
         // Not logged in
         if (requireAuth) {

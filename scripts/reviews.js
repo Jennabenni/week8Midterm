@@ -61,6 +61,7 @@ document.getElementById("review-form").addEventListener("submit", async (e) => {
         rating,
         reviewText,
         authorEmail: currentUser.email,
+        authorUsername: currentUser.displayName || currentUser.email,
         authorUid: currentUser.uid,
         createdAt: serverTimestamp()
     });
@@ -86,7 +87,8 @@ function buildReviewCard(reviewId, review) {
             year: "numeric", month: "long", day: "numeric"
         });
     }
-    meta.textContent = `${review.authorEmail} · ${stars}${dateStr}`;
+    const displayName = review.authorUsername || review.authorEmail;
+    meta.textContent = `${displayName} · ${stars}${dateStr}`;
 
     const text = document.createElement("p");
     text.textContent = review.reviewText;
@@ -141,7 +143,8 @@ function loadComments(reviewId, container) {
                 const comment = docSnap.data();
                 const p = document.createElement("p");
                 p.classList.add("comment");
-                p.innerHTML = `<strong>${comment.authorEmail}:</strong> ${comment.text}`;
+                const commenterName = comment.authorUsername || comment.authorEmail;
+                p.innerHTML = `<strong>${commenterName}:</strong> ${comment.text}`;
                 commentList.appendChild(p);
             });
         }
@@ -172,6 +175,7 @@ function loadComments(reviewId, container) {
             await addDoc(collection(db, "reviews", reviewId, "comments"), {
                 text,
                 authorEmail: currentUser.email,
+                authorUsername: currentUser.displayName || currentUser.email,
                 authorUid: currentUser.uid,
                 createdAt: serverTimestamp()
             });

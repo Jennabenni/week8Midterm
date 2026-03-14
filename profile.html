@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Activity</title>
+    <title>Profile</title>
     <link rel="stylesheet" href="style/styles.css">
 </head>
 <body data-auth-required="true">
@@ -19,23 +19,24 @@
 
     <main>
 
-        <div id="quiz-container">
-            <p id="question-counter"></p>
-            <p id="question-text"></p>
-            <div id="options-container"></div>
-            <button id="next-btn" disabled>Next</button>
-        </div>
+        <h1>Your Profile</h1>
 
-        <div id="result-container" style="display: none;">
-            <h2 id="result-title"></h2>
-            <p id="result-description"></p>
-            <ul id="result-list"></ul>
-            <button id="restart-btn">Take the Quiz Again</button>
-        </div>
+        <form id="profile-form">
+            <label for="profile-username">Username:</label>
+            <input type="text" id="profile-username" placeholder="Choose a username" required>
+
+            <label for="profile-email">Email:</label>
+            <input type="email" id="profile-email" required>
+
+            <button type="submit">Save Changes</button>
+        </form>
+
+        <p id="profile-success" style="display: none; color: green;">Changes saved.</p>
+        <p id="profile-error" class="auth-error"></p>
 
     </main>
 
-    <script src="scripts/activity.js"></script>
+    <script type="module" src="scripts/profile.js"></script>
     <script type="module" src="scripts/auth-guard.js"></script>
 
 </body>
