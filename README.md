@@ -170,3 +170,12 @@ CSS Styling
 - Will be based on the color yellow, specifically #FEC601
 - Accessible
 - Responsive
+
+
+
+
+***********************
+
+What I learned:
+
+Claude helped me learn about a new database service that is great for logging in and storing user info, and works great with Netlify.  I also learned that going step-by-step is better for avoiding errors and minimizes debugging that Claude needs to do.  I felt it was better for me to test items myself, and a quick overview with Claude at the end helped insure that everything was working smoothly.

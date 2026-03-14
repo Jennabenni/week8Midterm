@@ -8,8 +8,9 @@ Tech Stack
 - Vanilla JavaScript
 
 
-- localstorage (BASE)
-- One of recommended Cloud Databases (Will evaluate which best fits needs)
+- Firebase
+    - Users database (user information, personal notes, custom activities)
+    - reviews (user reviews and comments)
 
 
 *******************
