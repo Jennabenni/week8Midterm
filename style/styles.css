@@ -7,7 +7,7 @@
 }
 
 body {
-    background-color: #fff6d6;
+    background-color: #ffea9e;
     margin: 0;
     padding: 0;
     margin-top: 0px;
@@ -97,7 +97,7 @@ main {
    REVIEW FORM SECTION (index.html)
    ================================ */
 #review-form-section {
-    background-color: #fff;
+    background-color: #fff2c2;
     border: 1px solid black;
     border-radius: 6px;
     padding: 20px;
@@ -133,7 +133,7 @@ main {
    White background, confined to main width.
    ================================ */
 .review-card {
-    background-color: #fff;
+    background-color: #fff2c2;
     border: 1px solid #ddd;
     border-radius: 6px;
     padding: 16px;
@@ -239,7 +239,7 @@ main {
    Narrower max-width keeps the form compact. */
 #quiz-container,
 #result-container {
-    background-color: #fff;
+    background-color: #fff2c2;
     border: 1px solid #ddd;
     border-radius: 6px;
     padding: 28px;
@@ -267,7 +267,7 @@ main {
    Narrowed to match the quiz box width. */
 #food-generator,
 #custom-activity-section {
-    background-color: #fff;
+    background-color: #fff2c2;
     border: 1px solid #ddd;
     border-radius: 6px;
     padding: 28px;
@@ -320,7 +320,7 @@ main {
 }
 
 /* Hide the <hr> separators — spacing from the cards handles separation */
-body > hr {
+body>hr {
     display: none;
 }
 
