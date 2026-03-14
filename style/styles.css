@@ -61,13 +61,17 @@ nav a:hover {
 /* ================================
    SITE TITLE (index.html only)
    Sits above the nav bar as a header.
+   Overrides the global h1 max-width so
+   it spans the full page width.
    ================================ */
 #site-title {
-    background-color: #FEC601;
+    width: 100%;
+    max-width: none;
     margin: 0;
-    padding: 16px;
+    padding: 20px 16px;
     text-align: center;
     font-size: 1.8em;
+    background-color: #ffea9e;
 }
 
 
