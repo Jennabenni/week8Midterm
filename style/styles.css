@@ -92,3 +92,29 @@ p {
 .auth-error {
     color: red;
 }
+
+/* Reviews */
+.review-card {
+    border: 1px solid #000;
+    padding: 12px;
+    margin-bottom: 16px;
+}
+
+.review-meta {
+    font-size: 0.9em;
+}
+
+.comments-section {
+    margin-top: 10px;
+    padding-left: 12px;
+    border-left: 2px solid #ccc;
+}
+
+.comment {
+    margin: 4px 0;
+    font-size: 0.9em;
+}
+
+.comment-form {
+    margin-top: 8px;
+}
