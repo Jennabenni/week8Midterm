@@ -89,7 +89,7 @@ p {
 main {
     max-width: 860px;
     margin: 0 auto;
-    padding: 0 16px 40px;
+    padding: 24px 16px 40px;
 }
 
 
@@ -213,7 +213,33 @@ main {
 
 /* ================================
    CHECKLIST
+   Applies to all checklist-style lists
+   across checklist.html and activity.html.
+   Removes default bullet styling and lays
+   each item out as checkbox → label inline.
    ================================ */
+
+/* Remove bullets and default list padding */
+#checklist-items,
+#checklist-preview,
+.custom-activity-card ul,
+#result-custom-activities ul {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0;
+}
+
+/* Each item: checkbox on the left, label to the right */
+#checklist-items li,
+#checklist-preview li,
+.custom-activity-card li,
+#result-custom-activities li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 0;
+}
+
 .crossed-off {
     text-decoration: line-through;
     color: #888;
@@ -273,6 +299,15 @@ main {
     padding: 28px;
     max-width: 620px;
     margin: 24px auto;
+}
+
+/* Saved custom activity cards — bordered, narrower than the parent section */
+.custom-activity-card {
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    padding: 14px;
+    margin-top: 16px;
+    max-width: 460px;
 }
 
 /* Center the generate button in the food section */
