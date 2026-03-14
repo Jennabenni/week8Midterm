@@ -59,12 +59,42 @@
 
         <div id="food-result" style="display: none;">
             <p id="food-suggestion"></p>
-            <button id="next-food-btn">Next Suggestion</button>
         </div>
+    </section>
+
+    <hr>
+
+    <section id="custom-activity-section">
+        <h2>Create Your Own Activity</h2>
+
+        <form id="custom-activity-form">
+            <label for="custom-activity-name">Activity Name:</label>
+            <input type="text" id="custom-activity-name" placeholder="e.g. Pottery class" required>
+
+            <fieldset>
+                <legend>Category:</legend>
+                <label><input type="radio" name="activity-cat" value="Solo Laid-Back" required> Solo Laid-Back</label><br>
+                <label><input type="radio" name="activity-cat" value="Solo High-Intensity"> Solo High-Intensity</label><br>
+                <label><input type="radio" name="activity-cat" value="Group Laid-Back"> Group Laid-Back</label><br>
+                <label><input type="radio" name="activity-cat" value="Group High-Intensity"> Group High-Intensity</label>
+            </fieldset>
+
+            <label>Checklist Items:</label>
+            <div id="checklist-builder">
+                <input type="text" id="checklist-item-input" placeholder="e.g. Bring water bottle">
+                <button type="button" id="add-item-btn">Add Item</button>
+                <ul id="checklist-preview"></ul>
+            </div>
+
+            <button type="submit">Save Activity</button>
+        </form>
+
+        <div id="custom-activities-list"></div>
     </section>
 
     <script src="scripts/activity.js"></script>
     <script src="scripts/food.js"></script>
+    <script type="module" src="scripts/customActivity.js"></script>
     <script type="module" src="scripts/auth-guard.js"></script>
 
 </body>
