@@ -45,27 +45,32 @@ const results = {
     1: {
         title: "Cozy Solo Activity",
         description: "A relaxing activity you can enjoy on your own.",
-        activities: ["Read a book", "Play a video game", "Draw or paint", "Try another art form"]
+        activities: ["Read a book", "Play a video game", "Draw or paint", "Try another art form"],
+        category: "Solo Laid-Back"
     },
     2: {
         title: "Laid-Back Social Outing",
         description: "A chill activity to enjoy with others.",
-        activities: ["Visit a coffee shop", "Browse a bookstore", "Try an art studio", "Walk through a park", "Go hiking", "Visit a farmer's market", "Explore a museum", "Visit a zoo or aquarium", "Try a friendly escape room"]
+        activities: ["Visit a coffee shop", "Browse a bookstore", "Try an art studio", "Walk through a park", "Go hiking", "Visit a farmer's market", "Explore a museum", "Visit a zoo or aquarium", "Try a friendly escape room"],
+        category: "Group Laid-Back"
     },
     3: {
         title: "High-Energy Solo Adventure",
         description: "An exciting activity to get your adrenaline going on your own.",
-        activities: ["Go skateboarding", "Try rock climbing or bouldering", "Visit a nightclub"]
+        activities: ["Go skateboarding", "Try rock climbing or bouldering", "Visit a nightclub"],
+        category: "Solo High-Intensity"
     },
     4: {
         title: "High-Energy Group Experience",
         description: "An exciting activity to share with a group.",
-        activities: ["Go to a concert", "Try a bar crawl", "Visit a nightclub", "Spend a day at an amusement park", "Try a horror escape room"]
+        activities: ["Go to a concert", "Try a bar crawl", "Visit a nightclub", "Spend a day at an amusement park", "Try a horror escape room"],
+        category: "Group High-Intensity"
     },
     5: {
         title: "Cozy Indoor Hangout",
         description: "A laid-back indoor activity to enjoy with friends.",
-        activities: ["Play a video game together", "Play a board game", "Have a movie marathon", "Bake something together"]
+        activities: ["Play a video game together", "Play a board game", "Have a movie marathon", "Bake something together"],
+        category: "Group Laid-Back"
     }
 };
 
@@ -140,6 +145,10 @@ function showResult() {
         li.appendChild(link);
         resultList.appendChild(li);
     });
+
+    document.dispatchEvent(new CustomEvent("quizResultShown", {
+        detail: { category: result.category }
+    }));
 }
 
 function restartQuiz() {
@@ -147,6 +156,7 @@ function restartQuiz() {
     answers.length = 0;
     quizContainer.style.display = "block";
     resultContainer.style.display = "none";
+    document.dispatchEvent(new CustomEvent("quizRestarted"));
     loadQuestion(0);
 }
 

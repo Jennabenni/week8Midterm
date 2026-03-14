@@ -13,7 +13,67 @@ const checklistPreview = document.getElementById("checklist-preview");
 const activitiesList = document.getElementById("custom-activities-list");
 
 let currentUser = null;
-let pendingItems = []; // checklist items being built before saving
+let pendingItems = [];
+let cachedActivities = []; // kept in sync with Firestore for use in result injection
+
+const resultCustomActivities = document.getElementById("result-custom-activities");
+
+// Show matching custom activities when quiz result appears
+document.addEventListener("quizResultShown", (e) => {
+    const category = e.detail.category;
+    const matching = cachedActivities.filter(a => a.category === category);
+    renderResultActivities(matching);
+});
+
+// Clear when quiz restarts
+document.addEventListener("quizRestarted", () => {
+    if (resultCustomActivities) resultCustomActivities.innerHTML = "";
+});
+
+function renderResultActivities(activities) {
+    if (!resultCustomActivities) return;
+    resultCustomActivities.innerHTML = "";
+    if (activities.length === 0) return;
+
+    const heading = document.createElement("h3");
+    heading.textContent = "Your Custom Activities";
+    resultCustomActivities.appendChild(heading);
+
+    activities.forEach((activity) => {
+        const card = document.createElement("div");
+        card.classList.add("custom-activity-card");
+
+        const title = document.createElement("strong");
+        title.textContent = activity.name;
+        card.appendChild(title);
+
+        if (activity.items && activity.items.length > 0) {
+            const ul = document.createElement("ul");
+            activity.items.forEach(item => {
+                const li = document.createElement("li");
+                const checkbox = document.createElement("input");
+                checkbox.type = "checkbox";
+                const label = document.createElement("label");
+                label.textContent = item;
+                checkbox.addEventListener("change", () => {
+                    label.classList.toggle("crossed-off", checkbox.checked);
+                });
+                li.appendChild(checkbox);
+                li.appendChild(label);
+                ul.appendChild(li);
+            });
+            card.appendChild(ul);
+        }
+
+        const deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "Delete";
+        deleteBtn.addEventListener("click", async () => {
+            await deleteDoc(doc(db, "users", currentUser.uid, "customActivities", activity.id));
+        });
+        card.appendChild(deleteBtn);
+        resultCustomActivities.appendChild(card);
+    });
+}
 
 onAuthStateChanged(auth, (user) => {
     if (!user) return;
@@ -23,6 +83,10 @@ onAuthStateChanged(auth, (user) => {
     const q = query(ref, orderBy("createdAt", "desc"));
 
     onSnapshot(q, (snapshot) => {
+        cachedActivities = [];
+        snapshot.forEach(docSnap => {
+            cachedActivities.push({ id: docSnap.id, ...docSnap.data() });
+        });
         renderActivities(snapshot, user.uid);
     });
 });
