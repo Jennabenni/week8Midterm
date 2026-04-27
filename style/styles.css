@@ -18,6 +18,13 @@ body {
     margin: 0;
     padding: 0;
     margin-top: 0px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
 }
 
 a {
@@ -73,7 +80,8 @@ nav a:hover {
 }
 
 nav a.active {
-    border-bottom: 3px solid #e68a00;
+    background-color: #b83200;
+    color: #fff;
     font-weight: bold;
 }
 
