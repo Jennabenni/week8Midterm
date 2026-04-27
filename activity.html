@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Activity</title>
+    <title>Activity Planner</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style/styles.css">
 </head>
+
 <body data-auth-required="true">
 
     <nav>
@@ -22,7 +26,11 @@
     <main>
 
         <h1>Find Your Activity</h1>
-
+        <div class="activity-images">
+            <img src="img/cycling.jpg" alt="people on bikes">
+            <img src="img/skiing.jpg" alt="people skiing">
+            <img src="img/surfing.jpg" alt="surfing">
+        </div>
         <div id="quiz-container">
             <p id="question-counter"></p>
             <p id="question-text"></p>
@@ -78,10 +86,13 @@
 
             <fieldset>
                 <legend>Category:</legend>
-                <label><input type="radio" name="activity-cat" value="Solo Laid-Back" required> Solo Laid-Back</label><br>
-                <label><input type="radio" name="activity-cat" value="Solo High-Intensity"> Solo High-Intensity</label><br>
+                <label><input type="radio" name="activity-cat" value="Solo Laid-Back" required> Solo
+                    Laid-Back</label><br>
+                <label><input type="radio" name="activity-cat" value="Solo High-Intensity"> Solo
+                    High-Intensity</label><br>
                 <label><input type="radio" name="activity-cat" value="Group Laid-Back"> Group Laid-Back</label><br>
-                <label><input type="radio" name="activity-cat" value="Group High-Intensity"> Group High-Intensity</label>
+                <label><input type="radio" name="activity-cat" value="Group High-Intensity"> Group
+                    High-Intensity</label>
             </fieldset>
 
             <label>Checklist Items:</label>
@@ -107,4 +118,5 @@
     </footer>
 
 </body>
+
 </html>
