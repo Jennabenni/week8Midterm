@@ -7,8 +7,8 @@
 }
 
 img {
-    width: 500px;
-    height: auto;
+    width: auto;
+    height: 200px;
 }
 
 h1,
@@ -682,10 +682,7 @@ body>hr {
    ================================ */
 @media (max-width: 768px) {
 
-    img {
-        width: 400px;
-        height: auto;
-    }
+
 
     nav a {
         padding: 10px 12px;
@@ -708,10 +705,7 @@ body>hr {
    ================================ */
 @media (max-width: 480px) {
 
-    img {
-        width: 300px;
-        height: auto;
-    }
+
 
     nav a {
         padding: 10px 8px;
