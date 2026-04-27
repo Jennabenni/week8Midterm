@@ -7,8 +7,8 @@
 }
 
 img {
-    width: 100px;
-    height: 100px;
+    width: 500px;
+    height: auto;
 }
 
 h1,
@@ -681,6 +681,12 @@ body>hr {
    RESPONSIVE — TABLET (max 768px)
    ================================ */
 @media (max-width: 768px) {
+
+    img {
+        width: 400px;
+        height: auto;
+    }
+
     nav a {
         padding: 10px 12px;
         font-size: 0.95em;
@@ -701,6 +707,12 @@ body>hr {
    RESPONSIVE — PHONE (max 480px)
    ================================ */
 @media (max-width: 480px) {
+
+    img {
+        width: 300px;
+        height: auto;
+    }
+
     nav a {
         padding: 10px 8px;
         font-size: 0.85em;
