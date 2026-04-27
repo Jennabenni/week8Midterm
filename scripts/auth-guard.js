@@ -1,4 +1,9 @@
 import { auth } from './firebase-config.js';
+
+// Mark the current page's nav link as active
+document.querySelectorAll("nav a").forEach(link => {
+    if (link.href === window.location.href) link.classList.add("active");
+});
 import {
     onAuthStateChanged,
     signOut

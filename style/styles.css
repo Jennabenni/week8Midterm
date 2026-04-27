@@ -2,8 +2,12 @@
    BASE / GLOBAL
    ================================ */
 * {
-    font-family: Georgia, serif;
+    font-family: 'Lato', sans-serif;
     box-sizing: border-box;
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
 }
 
 body {
@@ -57,6 +61,11 @@ nav a:hover {
     background-color: #e6b100;
 }
 
+nav a.active {
+    border-bottom: 3px solid #e68a00;
+    font-weight: bold;
+}
+
 
 /* ================================
    SITE TITLE (index.html only)
@@ -71,7 +80,31 @@ nav a:hover {
     padding: 20px 16px;
     text-align: center;
     font-size: 1.8em;
-    background-color: #ffea9e;
+    background: linear-gradient(135deg, #ffea9e 0%, #ffd84f 50%, #ff9900 100%);
+}
+
+
+/* ================================
+   HERO IMAGE PLACEHOLDER (index.html)
+   ================================ */
+#hero-image-placeholder {
+    width: 100%;
+    max-width: 860px;
+    height: 260px;
+    margin: 24px auto 0;
+    background-color: #ffd84f;
+    border: 2px dashed #ff9900;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#hero-image-placeholder span {
+    color: #7a5800;
+    font-size: 1.1em;
+    font-style: italic;
+    letter-spacing: 0.04em;
 }
 
 
@@ -107,6 +140,22 @@ main {
     max-width: 860px;
     margin: 0 auto;
     padding: 24px 16px 40px;
+}
+
+
+/* ================================
+   CARD ACCENT + INPUT FOCUS (global)
+   ================================ */
+.review-card,
+.note-card,
+#review-form-section {
+    border-left: 4px solid #ff9900;
+}
+
+input:focus,
+textarea:focus {
+    outline: 2px solid #ff9900;
+    outline-offset: 1px;
 }
 
 
