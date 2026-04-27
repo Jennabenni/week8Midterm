@@ -6,10 +6,6 @@
     box-sizing: border-box;
 }
 
-img {
-    width: auto;
-    height: 200px;
-}
 
 h1,
 h2,
@@ -92,26 +88,36 @@ nav a.active {
 
 
 /* ================================
-   HERO IMAGE PLACEHOLDER (index.html)
+   HERO IMAGE (index.html)
    ================================ */
 #hero-image-placeholder {
     width: 100%;
     max-width: 860px;
-    height: 260px;
     margin: 24px auto 0;
-    background-color: #ffd84f;
-    border: 2px dashed #ff9900;
     border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    overflow: hidden;
+    display: block;
 }
 
-#hero-image-placeholder span {
-    color: #7a5800;
-    font-size: 1.1em;
-    font-style: italic;
-    letter-spacing: 0.04em;
+#hero-image-placeholder img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+    #hero-image-placeholder img {
+        height: 220px;
+    }
+}
+
+@media (max-width: 480px) {
+    #hero-image-placeholder img {
+        height: 160px;
+    }
 }
 
 
